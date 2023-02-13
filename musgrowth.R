@@ -501,7 +501,7 @@ annotate_figure(
 ## СРАВНИВАЕМ ПОЛУЧЕННЫЕ ДАННЫЕ ПРИРОСТА С ЛИТЕРАТУРНЫМИ ДАННЫМИ
 
 # импортируем базу литературных данных
-sphg_lit_db <- read.delim2("D:/d/EDCC/SPHAGNUM GROWTH/_статья22/R_stats/lit_db.csv")
+sphg_lit_db <- read.delim2("~/lit_db.csv")
 
 str(sphg_lit_db)
 
