@@ -16,7 +16,7 @@ library(purrr)
 library(rgbif)
 
 ## скачиваем данные с помощью пакета rgbif
-musgrowthdb <- read.delim("~/musgrowthdb.csv")
+musgrowthdb <- read.delim("D:/d/EDCC/SPHAGNUM GROWTH/_статья22/R_stats/musgrowthdb.csv")
 
 #===========
 ## ОБЩАЯ СТРУКТУРА ДАННЫХ
@@ -63,7 +63,9 @@ fig4a <- musgrowth %>%
   labs(x = "", y = "")+
   theme_minimal()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.16, 0.72))
+  theme(legend.position = c(0.16, 0.72))+
+  theme(axis.text.y = element_text(size = 15))+
+  theme(axis.text.x = element_text(size = 15))
 
 fig4b <- musgrowth %>% 
   ggplot(aes(x = log(organismQuantity), fill = scientificName)) + 
@@ -73,15 +75,16 @@ fig4b <- musgrowth %>%
   labs(x = "", y = "")+
   theme_minimal()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.19, 0.63))
-
-
+  theme(legend.position = c(0.19, 0.63))+
+  theme(axis.text.y = element_text(size = 15))+
+  theme(axis.text.x = element_text(size = 15))
+  
 figure4 <- ggarrange(fig4a, fig4b, ncol = 1, nrow = 2)
 
 annotate_figure(
   figure4,
-  bottom = text_grob("Annual growth increment, cm, log-transformed", y= 1, hjust = 0.5, size = 14),
-  left = text_grob("Density", x= 1, size = 14, rot = 90)
+  bottom = text_grob("Annual growth increment, cm, log-transformed", y= 1, hjust = 0.5, size = 15),
+  left = text_grob("Density", x= 1, size = 15, rot = 90)
 )
 
 # проверим нормальность с помощью теста Шапиро-Вилкоксона
@@ -131,7 +134,9 @@ descr1 <- musgrowth %>%
                                                    "S. jensenii", "S. magellanicum", "S. majus", "S. papillosum"))+
   theme_minimal ()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.7, 0.58)) 
+  theme(legend.position = c(0.7, 0.58))+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
 
 
 # столбиковая диаграмма: число измерений прироста по годам, заливка по местообитаниям
@@ -142,7 +147,9 @@ descr2 <- withoutotc %>%
   scale_fill_brewer(palette="Spectral",labels = c("Gramonoid-Er-Sphagnum bog", "Graminoid-Sphagnum bog", "Treed bog"))+
   theme_minimal()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.75, 0.85))
+  theme(legend.position = c(0.75, 0.85))+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений прироста по годам, заливка по разным экспериментальным условиям
 descr3 <- withotc %>% 
@@ -152,7 +159,9 @@ descr3 <- withotc %>%
   scale_fill_brewer(palette="Spectral", labels = c("Control plots", "Open Top Chambers plots"))+
   theme_minimal()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.75, 0.92))
+  theme(legend.position = c(0.75, 0.92))+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений прироста по годам, заливка по разным типам измерений
 descr4 <- withoutotc %>% 
@@ -162,7 +171,9 @@ descr4 <- withoutotc %>%
   scale_fill_brewer(palette="Spectral",labels = c("Crancked wire", "Individual ringlet"))+
   theme_minimal()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.65, 0.92))
+  theme(legend.position = c(0.65, 0.92))+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений первичной продукции по годам, заливка по разным видам сфагнума
 descr5 <- musproduct %>%
@@ -174,7 +185,9 @@ descr5 <- musproduct %>%
                                                    "S. jensenii", "S. magellanicum", "S. majus", "S. papillosum"))+
   theme_minimal ()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.7, 0.65)) 
+  theme(legend.position = c(0.7, 0.65))+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений первичной продукции по годам, заливка по разным типам экспериментальных условий
 descr6 <- productwithotc %>% 
@@ -184,14 +197,16 @@ descr6 <- productwithotc %>%
   scale_fill_brewer(palette="Spectral", labels = c("Control plots", "Open Top Chambers plots"))+
   theme_minimal()+
   theme(legend.title = element_blank())+
-  theme(legend.position = c(0.71, 0.93))
+  theme(legend.position = c(0.71, 0.93))+
+  theme(axis.text.y = element_text(size = 15))+
+  theme(axis.text.x = element_text(size = 15))
 
 figure3 <- ggarrange(descr1, descr2, descr3, descr4, descr5, descr6, ncol = 2, nrow = 3)
 
 annotate_figure(
   figure3,
-  bottom = text_grob("Years", y= 1, hjust = 0.5, size = 14),
-  left = text_grob("Total numer of measurements", x= 0.4, size = 14, rot = 90)
+  bottom = text_grob("Years", y= 1, hjust = 0.5, size = 15),
+  left = text_grob("Total numer of measurements", x= 0.4, size = 15, rot = 90)
 )
 
 # посчитаем основные статистики прироста (среднее, стандартное отклонение) и представим их в виде таблицы в статье
@@ -244,7 +259,11 @@ ggplot(musgrowth, aes (x = organismQuantity, y = scientificName, fill = Year))+
   labs(x = "Growth increment, cm", y = "Species")+
   scale_color_discrete(name="")+
   theme_minimal()+
-  theme(legend.title=element_blank(), legend.position = c(0.8, 0.9))
+  theme(legend.title=element_blank(), legend.position = c(0.8, 0.9))+
+  theme(axis.text.y = element_text(size = 15))+
+  theme(axis.text.x = element_text(size = 15))+
+  theme(axis.title.y = element_text(size = 15))+
+  theme(axis.title.x = element_text(size = 15))
 
 # построим матрицу вероятности различий между видами с помощью теста Вилкоксона, тем или другим способом
 сorrspecies <- pairwise.wilcox.test(musgrowth$organismQuantity, musgrowth$scientificName)
@@ -299,16 +318,19 @@ wil_fus <- pairwise.wilcox.test(s_fusc$organismQuantity, s_fusc$Year, paired = F
 wil_maj <- pairwise.wilcox.test(s_maj$organismQuantity, s_maj$Year, paired = FALSE, exact=FALSE)
 wil_all <- pairwise.wilcox.test(withoutexperiment$organismQuantity, withoutexperiment$Year, 
                                 paired = FALSE, exact=FALSE)
+
+# Рисунок 7. Матрицы различий годового прироста разных видов сфагнума, построенные с использованием критерия Вилкоксона, p-значения были преобразованы (-log10), чтобы показать разницу, 0 - незначительная разница.
+
 par(mfrow=c(3,3))
-corrplot(as.matrix(-log10(wil_balt$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S balt")
-corrplot(as.matrix(-log10(wil_ang$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S ang")
-corrplot(as.matrix(-log10(wil_cap$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S cap")
-corrplot(as.matrix(-log10(wil_pap$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S pap")
-corrplot(as.matrix(-log10(wil_jen$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S jen")
-corrplot(as.matrix(-log10(wil_mag$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S mag")
-corrplot(as.matrix(-log10(wil_fus$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S fus")
-corrplot(as.matrix(-log10(wil_maj$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S maj")
-corrplot(as.matrix(-log10(wil_all$p.value)), type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="All species together")
+corrplot(as.matrix(-log10(wil_balt$p.value)), tl.cex = 1.5, number.cex = 1.5, type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S balt")
+corrplot(as.matrix(-log10(wil_ang$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S ang")
+corrplot(as.matrix(-log10(wil_cap$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S cap")
+corrplot(as.matrix(-log10(wil_pap$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S pap")
+corrplot(as.matrix(-log10(wil_jen$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S jen")
+corrplot(as.matrix(-log10(wil_mag$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S mag")
+corrplot(as.matrix(-log10(wil_fus$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S fus")
+corrplot(as.matrix(-log10(wil_maj$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="S maj")
+corrplot(as.matrix(-log10(wil_all$p.value)), tl.cex = 1.5, number.cex = 1.5,type = 'lower', addCoef.col = 'red', p.mat = NULL, tl.col = "black",  number.digits = 1, is.corr = F, method = "circle", addrect = "0", mar = c(1, 1, 3, 1), cl.pos = 'n', main="All species together")
 
 
 # определяет ли УБВ прирост (все вместе и по отдельным видам)?
@@ -335,7 +357,10 @@ sphg1 <- ggplot(s_balt, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(col="red", method = "lm")
+  geom_smooth(col="red", method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 sphg2 <- ggplot(s_ang, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S angustifolium") +
@@ -343,7 +368,10 @@ sphg2 <- ggplot(s_ang, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(col="red", method = "lm")
+  geom_smooth(col="red", method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 sphg3 <- ggplot(s_cap, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S capillifolium") +
@@ -351,7 +379,10 @@ sphg3 <- ggplot(s_cap, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 sphg4 <- ggplot(s_pap, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S papillifolium") +
@@ -359,7 +390,10 @@ sphg4 <- ggplot(s_pap, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(col="red", method = "lm")
+  geom_smooth(col="red", method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 sphg5 <- ggplot(s_jen, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S jenseni") +
@@ -367,7 +401,10 @@ sphg5 <- ggplot(s_jen, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 sphg6 <- ggplot(s_mag, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S magellanicum") +
@@ -375,7 +412,10 @@ sphg6 <- ggplot(s_mag, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(col="red", method = "lm")
+  geom_smooth(col="red", method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 sphg7 <- ggplot(s_fusc, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S fuscum") +
@@ -383,7 +423,10 @@ sphg7 <- ggplot(s_fusc, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 sphg8 <- ggplot(s_maj, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S majus") +
@@ -391,14 +434,17 @@ sphg8 <- ggplot(s_maj, aes(fieldNotes, organismQuantity))+
   theme(plot.title = element_text(hjust = 0.5, face = "italic", size = 11)) +
   xlab("") + 
   ylab("")+
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm")+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) 
+
 figure <- ggarrange(sphg1, sphg2, sphg3, sphg4, sphg5, sphg6, sphg7, sphg8, ncol = 2, nrow = 4)
 
 annotate_figure(
   figure,
-  bottom = text_grob("Water level, cm below the surface", y= 1, hjust = 0.5, size = 14),
-  left = text_grob("Annual growth increment, cm", x= 1, size = 14, rot = 90),
-  right = text_grob("*Red line marks statistically significant correlation", hjust = 1, y=0.5, size = 11, rot = 90, color = "red")
+  bottom = text_grob("Water level, cm below the surface", y= 1, hjust = 0.5, size = 15),
+  left = text_grob("Annual growth increment, cm", x= 1, size = 15, rot = 90),
+  right = text_grob("*Red line marks statistically significant correlation", hjust = 1, y=0.5, size = 13, rot = 90, color = "red")
 )
 
 
@@ -448,7 +494,11 @@ ggplot(withotc, aes (x = organismQuantity, y = occurrenceRemarks, fill = Year))+
   scale_fill_brewer(palette="Spectral")+
   labs(x = "Growth increment, cm", y = "Experiment")+
   theme_minimal()+
-  theme(legend.title=element_blank(), legend.position = c(0.8, 0.9))
+  theme(legend.title=element_blank(), legend.position = c(0.8, 0.9))+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) +
+  theme(axis.title.y = element_text(size = 15))+
+  theme(axis.title.x = element_text(size = 15)) 
 
 
 # какие параметры значимо влияют на первичную продукцию?
@@ -501,7 +551,7 @@ annotate_figure(
 ## СРАВНИВАЕМ ПОЛУЧЕННЫЕ ДАННЫЕ ПРИРОСТА С ЛИТЕРАТУРНЫМИ ДАННЫМИ
 
 # импортируем базу литературных данных
-sphg_lit_db <- read.delim2("~/lit_db.csv")
+sphg_lit_db <- read.delim2("D:/d/EDCC/SPHAGNUM GROWTH/_статья22/R_stats/lit_db.csv")
 
 str(sphg_lit_db)
 
@@ -515,7 +565,11 @@ ggplot2::ggplot(sphg_lit_db, aes (x = species, y = LI..mm..y, fill = Our_data))+
   geom_jitter(color=ifelse(sphg_lit_db$Our_data == "This study", "#ffffbf", "#f8766d"), size=1, alpha=1)+
   scale_fill_brewer(palette="Spectral")+
   theme_minimal()+
-  theme(legend.title=element_blank(), legend.position = c(0.85, 0.3))
+  theme(legend.title=element_blank(), legend.position = c(0.85, 0.3))+
+  theme(axis.text.y = element_text(size = 13))+
+  theme(axis.text.x = element_text(size = 13)) +
+  theme(axis.title.y = element_text(size = 13))+
+  theme(axis.title.x = element_text(size = 15)) 
 
 #сравниваем литературные данные и наши по видам сфагнума
 sang<- sphg_lit_db[sphg_lit_db$species == "S. angustifolium",]
