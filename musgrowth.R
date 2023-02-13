@@ -76,7 +76,7 @@ fig4b <- musgrowth %>%
   theme(legend.position = c(0.19, 0.63))
 
 
-figure4 <- ggarrange(fig4a, fig4b, ncol = 1, nrow = 3)
+figure4 <- ggarrange(fig4a, fig4b, ncol = 1, nrow = 2)
 
 annotate_figure(
   figure4,
