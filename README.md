@@ -9,6 +9,9 @@ We analyze data from the project "Sphagnum annual growth and primary production 
 
 ## How to use scripts
 1. Скачать исходные данные прироста и первичной продукции (папка "data" в этом репозитории / "musgrowthdb"; обновление исходных данных будет происходить только в репозитории GBIF)
-Filippova N, Kosykh N (2023). Sphagnum annual growth and primary production measurements (Mukhrino field station, West Siberia) (2018-2022). Version 1.12. Yugra State University Biological Collection (YSU BC). Occurrence dataset https://doi.org/10.15468/fcz7at accessed via GBIF.org on 2023-02-13.
 2. Скачать базу данных прироста и первичной продукции на основе литературы (папка "data" в этом репозитории / "lit_db.csv")
 3. Загрузить скрипт R "musgrowth.R" в RStudio и выполнить соответствующие скрипты.
+
+## Data storage
+
+Filippova N, Kosykh N (2023). Sphagnum annual growth and primary production measurements (Mukhrino field station, West Siberia) (2018-2022). Version 1.12. Yugra State University Biological Collection (YSU BC). Occurrence dataset https://doi.org/10.15468/fcz7at accessed via GBIF.org on 2023-02-13.
