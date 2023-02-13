@@ -16,7 +16,7 @@ library(purrr)
 library(rgbif)
 
 ## скачиваем данные с помощью пакета rgbif
-musgrowthdb <- read.delim("D:/d/EDCC/SPHAGNUM GROWTH/_статья22/R_stats/musgrowthdb.csv")
+musgrowthdb <- read.delim("~/musgrowthdb.csv")
 
 #===========
 ## ОБЩАЯ СТРУКТУРА ДАННЫХ
