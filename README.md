@@ -6,6 +6,3 @@ This repository contains scripts and data for the arEnvironmental Dynamics and G
 ## About the project
 
 We analyze data from the iNaturalist project "Sphagnum annual growth and primary production in Mukhrino bog" (https://mukhrinostation.com/research/mukhrino-sphagnum-growth/).
-
-## How to use scripts
-
