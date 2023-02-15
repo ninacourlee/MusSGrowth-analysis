@@ -125,7 +125,7 @@ musproduct %>%
 
 #Рисунок 3. Описательные статистики, представляющие общее число полученных измерений прироста сфагнума и первичной продукции по годам, видам, типам местообитаний, экспериментальным условиям и методам измерений на площадках стационара Мухрино за четырехлетний период мониторинга. А-D: прирост сфагнума, E-F: первичная продукция.
 # столбиковая диаграмма: число измерений прироста по годам, заливка по разным видам сфагнума
-descr1 <- musgrowth %>%
+fig3a <- musgrowth %>%
   ggplot(aes(x = Year, fill = scientificName)) + 
   labs(x = "", y = "")+
   geom_bar()+
@@ -140,7 +140,7 @@ descr1 <- musgrowth %>%
 
 
 # столбиковая диаграмма: число измерений прироста по годам, заливка по местообитаниям
-descr2 <- withoutotc %>% 
+fig3b <- withoutotc %>% 
   ggplot(aes(x = Year, fill = habitat)) + 
   labs(x = "", y = "")+
   geom_bar()+
@@ -152,7 +152,7 @@ descr2 <- withoutotc %>%
   theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений прироста по годам, заливка по разным экспериментальным условиям
-descr3 <- withotc %>% 
+fig3c <- withotc %>% 
   ggplot(aes(x = Year, fill = occurrenceRemarks)) + 
   labs(x = "", y = "")+
   geom_bar()+
@@ -164,7 +164,7 @@ descr3 <- withotc %>%
   theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений прироста по годам, заливка по разным типам измерений
-descr4 <- withoutotc %>% 
+fig3d <- withoutotc %>% 
   ggplot(aes(x = Year, fill = samplingProtocol)) + 
   labs(x = "", y = "")+
   geom_bar()+
@@ -176,7 +176,7 @@ descr4 <- withoutotc %>%
   theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений первичной продукции по годам, заливка по разным видам сфагнума
-descr5 <- musproduct %>%
+fig3e <- musproduct %>%
   ggplot(aes(x = Year, fill = scientificName)) + 
   labs(x = "", y = "")+
   geom_bar()+
@@ -190,7 +190,7 @@ descr5 <- musproduct %>%
   theme(axis.text.x = element_text(size = 13))
 
 # столбиковая диаграмма: число измерений первичной продукции по годам, заливка по разным типам экспериментальных условий
-descr6 <- productwithotc %>% 
+fig3f <- productwithotc %>% 
   ggplot(aes(x = Year, fill = occurrenceRemarks)) + 
   labs(x = "", y = "")+
   geom_bar()+
@@ -201,7 +201,7 @@ descr6 <- productwithotc %>%
   theme(axis.text.y = element_text(size = 15))+
   theme(axis.text.x = element_text(size = 15))
 
-figure3 <- ggarrange(descr1, descr2, descr3, descr4, descr5, descr6, ncol = 2, nrow = 3)
+figure3 <- ggarrange(fig3a, fig3b, fig3c, fig3d, fig3e, fig3f, ncol = 2, nrow = 3)
 
 annotate_figure(
   figure3,
