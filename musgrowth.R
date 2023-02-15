@@ -1,6 +1,6 @@
 ## ANNUAL GROWTH AND PRIMARY PRODUCTION OF SPHAGNUM IN RAISED BOG “MUKHRINO” (FOUR-YEARS OBSERVATION: 2019-2022)
 
-## Датасет доступен в GBIF: 9.	Filippova N., Kosykh N. 2023. Sphagnum annual growth and primary production measurements (Mukhrino field station, West Siberia) (2018-2022). Version 1.12. Yugra State University Biological Collection (YSU BC). Occurrence dataset. DOI: 10.15468/fcz7at 
+## Датасет доступен в GBIF: Filippova N., Kosykh N. 2023. Sphagnum annual growth and primary production measurements (Mukhrino field station, West Siberia) (2018-2022). Version 1.12. Yugra State University Biological Collection (YSU BC). Occurrence dataset. DOI: 10.15468/fcz7at 
 
 ## Необходимые пакеты
 library(magrittr)
