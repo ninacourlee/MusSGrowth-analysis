@@ -16,7 +16,7 @@ library(purrr)
 library(rgbif)
 
 ## скачиваем данные с помощью пакета rgbif
-musgrowthdb <- read.delim("D:/d/EDCC/SPHAGNUM GROWTH/_статья22/R_stats/musgrowthdb.csv")
+musgrowthdb <- read.delim("~/musgrowthdb.csv")
 
 #===========
 ## ОБЩАЯ СТРУКТУРА ДАННЫХ
@@ -235,7 +235,7 @@ write.csv(product_mean_sd, "Table 5.csv")
 aov_musgrowth <- aov(organismQuantity ~ scientificName * Year * habitat * fieldNotes * occurrenceRemarks, data = musgrowth)
 summary(aov_musgrowth) #scientificName and year and interactions
 
-# выводим результаты дисперсионного анализа в виде таблицы для статьи, таким или другим способом
+# выводим результаты дисперсионного анализа в виде таблицы для статьи
 # Таблица 2.Результаты множественного дисперсионного анализа (aov, stats), показывающие значимое влияние нескольких параметров и их взаимодействия на годовой прирост сфагнума.
 Table2 <- write.csv(anova_summary(aov_musgrowth, effect.size = "ges", detailed = FALSE, observed = NULL), file = "Table 2.csv")
 
@@ -265,7 +265,7 @@ ggplot(musgrowth, aes (x = organismQuantity, y = scientificName, fill = Year))+
   theme(axis.title.y = element_text(size = 15))+
   theme(axis.title.x = element_text(size = 15))
 
-# построим матрицу вероятности различий между видами с помощью теста Вилкоксона, тем или другим способом
+# построим матрицу вероятности различий между видами с помощью теста Вилкоксона
 сorrspecies <- pairwise.wilcox.test(musgrowth$organismQuantity, musgrowth$scientificName)
 сorrspeciesproduct <- pairwise.wilcox.test(musproduct$organismQuantity, musproduct$scientificName)
 
@@ -350,7 +350,7 @@ cor.test(s_maj$organismQuantity, s_maj$fieldNotes) # p-value = 0.681
 
 # визуализируем влияние УБВ по отдельным видам
 # Рисунок 8. Графики корреляции уровня болотных вод (ось х) и прироста разных видов сфагнума (ось y), на основе метода Пирсона (corr.test) при помощи визуализации geom_point и geom_smooth функции ggplot.
-sphg1 <- ggplot(s_balt, aes(fieldNotes, organismQuantity))+
+fig8a <- ggplot(s_balt, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S balticum") +
   theme_minimal()+
@@ -361,7 +361,7 @@ sphg1 <- ggplot(s_balt, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-sphg2 <- ggplot(s_ang, aes(fieldNotes, organismQuantity))+
+fig8b <- ggplot(s_ang, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S angustifolium") +
   theme_minimal()+
@@ -372,7 +372,7 @@ sphg2 <- ggplot(s_ang, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-sphg3 <- ggplot(s_cap, aes(fieldNotes, organismQuantity))+
+fig8c <- ggplot(s_cap, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S capillifolium") +
   theme_minimal()+
@@ -383,7 +383,7 @@ sphg3 <- ggplot(s_cap, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-sphg4 <- ggplot(s_pap, aes(fieldNotes, organismQuantity))+
+fig8d <- ggplot(s_pap, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S papillifolium") +
   theme_minimal()+
@@ -394,7 +394,7 @@ sphg4 <- ggplot(s_pap, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-sphg5 <- ggplot(s_jen, aes(fieldNotes, organismQuantity))+
+fig8e <- ggplot(s_jen, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S jenseni") +
   theme_minimal()+
@@ -405,7 +405,7 @@ sphg5 <- ggplot(s_jen, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-sphg6 <- ggplot(s_mag, aes(fieldNotes, organismQuantity))+
+fig8e <- ggplot(s_mag, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S magellanicum") +
   theme_minimal()+
@@ -416,7 +416,7 @@ sphg6 <- ggplot(s_mag, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-sphg7 <- ggplot(s_fusc, aes(fieldNotes, organismQuantity))+
+fig8f <- ggplot(s_fusc, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S fuscum") +
   theme_minimal()+
@@ -427,7 +427,7 @@ sphg7 <- ggplot(s_fusc, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-sphg8 <- ggplot(s_maj, aes(fieldNotes, organismQuantity))+
+fig8g <- ggplot(s_maj, aes(fieldNotes, organismQuantity))+
   geom_point()+
   ggtitle("S majus") +
   theme_minimal()+
@@ -438,10 +438,10 @@ sphg8 <- ggplot(s_maj, aes(fieldNotes, organismQuantity))+
   theme(axis.text.y = element_text(size = 13))+
   theme(axis.text.x = element_text(size = 13)) 
 
-figure <- ggarrange(sphg1, sphg2, sphg3, sphg4, sphg5, sphg6, sphg7, sphg8, ncol = 2, nrow = 4)
+figure8 <- ggarrange(fig8a, fig8b, fig8c, fig8d, fig8e, fig8f, fig8g, fig8f, ncol = 2, nrow = 4)
 
 annotate_figure(
-  figure,
+  figure8,
   bottom = text_grob("Water level, cm below the surface", y= 1, hjust = 0.5, size = 15),
   left = text_grob("Annual growth increment, cm", x= 1, size = 15, rot = 90),
   right = text_grob("*Red line marks statistically significant correlation", hjust = 1, y=0.5, size = 13, rot = 90, color = "red")
@@ -551,7 +551,7 @@ annotate_figure(
 ## СРАВНИВАЕМ ПОЛУЧЕННЫЕ ДАННЫЕ ПРИРОСТА С ЛИТЕРАТУРНЫМИ ДАННЫМИ
 
 # импортируем базу литературных данных
-sphg_lit_db <- read.delim2("D:/d/EDCC/SPHAGNUM GROWTH/_статья22/R_stats/lit_db.csv")
+sphg_lit_db <- read.delim2("~/lit_db.csv")
 
 str(sphg_lit_db)
 
